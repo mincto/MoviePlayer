@@ -10,17 +10,39 @@
 * */
 package kr.co.stylenetwork.movieplayer;
 
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-public class MyListAdapter extends BaseAdapter {
+import java.util.ArrayList;
 
+public class MyListAdapter extends BaseAdapter {
+    Context context;/*인플레이터 객체를 메모리에 올리기 위해서는 Activity가 필요
+    하므로..*/
+    LayoutInflater inflater;
     ArrayList<Movie> list = new ArrayList<Movie>();
+
+    /* 아직 웹서버와의 연동을 시도하지 않았으므로, 가상으로 데이터를
+    * 생성하여 ListView의 모습을 보자!!*/
+    public MyListAdapter(Context context) {
+        this.context=context;
+        inflater =(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        for(int i=0;i<20;i++) {
+            Movie dto = new Movie();
+            dto.setTitle("배트맨 비긴즈");
+            dto.setActor("크리스찬 베일");
+            dto.setOpenDay("2015-08-15");
+
+            list.add(dto);
+        }
+    }
 
     /*리스트뷰가 보여줄 아이템의 갯수를 반환해주는 메서드*/
     public int getCount() {
-        return 0;
+        return list.size();
     }
 
     /* position 번째에 해당하는 아이템을 반환하는 메서드!!*/
@@ -38,7 +60,11 @@ public class MyListAdapter extends BaseAdapter {
     *  반환된다 . 우리의 경우 RelativeLayout  이다!!
     * */
     public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+        /* item.xml 파일을 인플레이션 시켜서, 반환해주자!!*/
+        View view=null;
+        view=inflater.inflate(R.layout.item, parent, false);
+
+        return view;
     }
 }
 
