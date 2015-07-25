@@ -26,6 +26,7 @@ public class MyPagerAdapter extends FragmentStatePagerAdapter{
         super(fm);
         pages[0] = new ListFragment();
         pages[1] = new DetailFragment();
+
     }
 
     /*  총 몇페이지를 보여줄지를 결정하는 메서드*/
@@ -37,6 +38,7 @@ public class MyPagerAdapter extends FragmentStatePagerAdapter{
     public Fragment getItem(int position) {
         return pages[position];
     }
+
 
 
 }
