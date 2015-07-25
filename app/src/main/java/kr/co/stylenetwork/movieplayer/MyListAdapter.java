@@ -62,8 +62,14 @@ public class MyListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         /* item.xml 파일을 인플레이션 시켜서, 반환해주자!!*/
         View view=null;
-        view=inflater.inflate(R.layout.item, parent, false);
 
+        /*아이템이 없을 때는 인플레이션시켜야 하지만 이미, 존재할때는 기존 뷰로
+        * 대체해야 함!!*/
+        if(convertView == null) {
+            view = inflater.inflate(R.layout.item, parent, false);
+        }else{
+            view=convertView;
+        }
         return view;
     }
 }
