@@ -10,19 +10,23 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
 
 import java.io.File;
 
 public class DetailFragment extends Fragment {
+    MediaController controller;
     VideoView videoView;
     String path;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view=null;
         view=inflater.inflate(R.layout.fragment_detail, container, false);
+        controller = new MediaController(getActivity());
         videoView = (VideoView)view.findViewById(R.id.videoView);
+        videoView.setMediaController(controller);/*컨트롤러 부착!!*/
 
         /*영화가 끝나면, 버튼을 다시 활성화 시켜주자!*/
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {

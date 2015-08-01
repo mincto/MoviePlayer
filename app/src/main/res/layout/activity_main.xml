@@ -25,7 +25,7 @@
             android:enabled="false"/>
     </LinearLayout>
 
-    <android.support.v4.view.ViewPager
+    <kr.co.stylenetwork.movieplayer.MyViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
